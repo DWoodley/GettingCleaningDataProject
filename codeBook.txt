@@ -1,3 +1,4 @@
+Script: run_analysis.R
 
     This process downloads files for the "Human Activity Recognition Using Smartphones Data Set"
 from the University of California Irvine and processes them to create a "tidy" dataset. The
@@ -119,6 +120,7 @@ Input Data Files:
 Output:
     File: 
         "../TidyDataset.csv" CSV file containing "tidy" data.
+        "../crossmeans.txt"  Text file containing averages from "../TidyDataset.csv"
         
     data.tables/frames: 
         "dataset"           data.table containing final "tidy" data with mean and standard deviation columns.
@@ -182,10 +184,11 @@ Output:
     17a. Remove existing "crossmeans" table, if any.
     17b. For each subject and activity combination calculate mean for each column and store.
          in "crossmeans" data.frame. Create new "crossmeans" data.frame during first iteration.
+    17c. Create output file "..\crossmeans.txt"."
 
 18. Clean up un-needed data.tables and data.frames.
 
-Data.tables/data.frames remaining are:
+Data.tables/data.frames remaining in memory are:
     A. data.table "dataset" containing mean and standard deviation columns.
     B. data.frame "crossmeans" containing calculated averages of values from 
        "dataset" grouped by subject and activity.

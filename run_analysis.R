@@ -132,6 +132,7 @@ for(sbj in unique(dataset$subject)) {
     }
 }
 
+write.table(crossmeans,"../crossmeans.txt",row.name=FALSE)
 ###############################################################################
 ## Clean up un-needed tables
 rm("training_set","testing_set","X_test","Y_test","X_train","Y_train",

@@ -5,18 +5,13 @@ date: "Tuesday, December 06, 2016"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Script: run_analysis.R
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+    This process downloads files for the "Human Activity Recognition Using Smartphones Data Set"
+from the University of California Irvine and processes them to create a "tidy" dataset. The
+variables included in the dataset are mean and standard deviation measurements of 30 subject's
+movement as detected by Samsung S II cell phones.
 
-```{r}
-summary(cars)
-```
+Assumes pre-existing directory "c:/datasciencecoursera/Getting and Cleaning Data/Course Project"
 
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+See file: CodeBook.md
