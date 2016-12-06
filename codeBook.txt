@@ -1,0 +1,191 @@
+
+    This process downloads files for the "Human Activity Recognition Using Smartphones Data Set"
+from the University of California Irvine and processes them to create a "tidy" dataset. The
+variables included in the dataset are mean and standard deviation measurements of 30 subject's
+movement as detected by Samsung S II cell phones.
+
+Assumes pre-existing directory "c:/datasciencecoursera/Getting and Cleaning Data/Course Project"
+
+Final Variables (columns):
+     [1] "subject"                                                          
+     [2] "activity"                                                         
+     [3] "TimeDomain.Mean.Body.Acceleration...X"                            
+     [4] "TimeDomain.Mean.Body.Acceleration...Y"                            
+     [5] "TimeDomain.Mean.Body.Acceleration...Z"                            
+     [6] "TimeDomain.Mean.Gravity.Acceleration...X"                         
+     [7] "TimeDomain.Mean.Gravity.Acceleration...Y"                         
+     [8] "TimeDomain.Mean.Gravity.Acceleration...Z"                         
+     [9] "TimeDomain.Mean.Body.Jerk.Acceleration...X"                       
+    [10] "TimeDomain.Mean.Body.Jerk.Acceleration...Y"                       
+    [11] "TimeDomain.Mean.Body.Jerk.Acceleration...Z"                       
+    [12] "TimeDomain.Mean.Body.Gyroscopic...X"                              
+    [13] "TimeDomain.Mean.Body.Gyroscopic...Y"                              
+    [14] "TimeDomain.Mean.Body.Gyroscopic...Z"                              
+    [15] "TimeDomain.Mean.Body.Jerk.Gyroscopic...X"                         
+    [16] "TimeDomain.Mean.Body.Jerk.Gyroscopic...Y"                         
+    [17] "TimeDomain.Mean.Body.Jerk.Gyroscopic...Z"                         
+    [18] "TimeDomain.Mean.Body.Magnetic.Acceleration.."                     
+    [19] "TimeDomain.Mean.Magnetic.Gravity.Acceleration.."                  
+    [20] "TimeDomain.Mean.Body.Magnetic.Jerk.Acceleration.."                
+    [21] "TimeDomain.Mean.Body.Magnetic.Gyroscopic.."                       
+    [22] "TimeDomain.Mean.Body.Magnetic.Jerk.Gyroscopic.."                  
+    [23] "FrequencyDomain.Mean.Body.Acceleration...X"                       
+    [24] "FrequencyDomain.Mean.Body.Acceleration...Y"                       
+    [25] "FrequencyDomain.Mean.Body.Acceleration...Z"                       
+    [26] "FrequencyDomain.Mean.Body.AccelerationFreq...X"                   
+    [27] "FrequencyDomain.Mean.Body.AccelerationFreq...Y"                   
+    [28] "FrequencyDomain.Mean.Body.AccelerationFreq...Z"                   
+    [29] "FrequencyDomain.Mean.Body.Jerk.Acceleration...X"                  
+    [30] "FrequencyDomain.Mean.Body.Jerk.Acceleration...Y"                  
+    [31] "FrequencyDomain.Mean.Body.Jerk.Acceleration...Z"                  
+    [32] "FrequencyDomain.Mean.Body.Jerk.AccelerationFreq...X"              
+    [33] "FrequencyDomain.Mean.Body.Jerk.AccelerationFreq...Y"              
+    [34] "FrequencyDomain.Mean.Body.Jerk.AccelerationFreq...Z"              
+    [35] "FrequencyDomain.Mean.Body.Gyroscopic...X"                         
+    [36] "FrequencyDomain.Mean.Body.Gyroscopic...Y"                         
+    [37] "FrequencyDomain.Mean.Body.Gyroscopic...Z"                         
+    [38] "FrequencyDomain.Mean.Body.GyroscopicFreq...X"                     
+    [39] "FrequencyDomain.Mean.Body.GyroscopicFreq...Y"                     
+    [40] "FrequencyDomain.Mean.Body.GyroscopicFreq...Z"                     
+    [41] "FrequencyDomain.Mean.Body.Magnetic.Acceleration.."                
+    [42] "FrequencyDomain.Mean.Body.Magnetic.AccelerationFreq.."            
+    [43] "FrequencyDomain.Mean.BodyBody.Magnetic.Jerk.Acceleration.."       
+    [44] "FrequencyDomain.Mean.BodyBody.Magnetic.Jerk.AccelerationFreq.."   
+    [45] "FrequencyDomain.Mean.BodyBody.Magnetic.Gyroscopic.."              
+    [46] "FrequencyDomain.Mean.BodyBody.Magnetic.GyroscopicFreq.."          
+    [47] "FrequencyDomain.Mean.BodyBody.Magnetic.Jerk.Gyroscopic.."         
+    [48] "FrequencyDomain.Mean.BodyBody.Magnetic.Jerk.GyroscopicFreq.."     
+    [49] "TimeDomain.StandardDev.Body.Acceleration...X"                     
+    [50] "TimeDomain.StandardDev.Body.Acceleration...Y"                     
+    [51] "TimeDomain.StandardDev.Body.Acceleration...Z"                     
+    [52] "TimeDomain.StandardDev.Gravity.Acceleration...X"                  
+    [53] "TimeDomain.StandardDev.Gravity.Acceleration...Y"                  
+    [54] "TimeDomain.StandardDev.Gravity.Acceleration...Z"                  
+    [55] "TimeDomain.StandardDev.Body.Jerk.Acceleration...X"                
+    [56] "TimeDomain.StandardDev.Body.Jerk.Acceleration...Y"                
+    [57] "TimeDomain.StandardDev.Body.Jerk.Acceleration...Z"                
+    [58] "TimeDomain.StandardDev.Body.Gyroscopic...X"                       
+    [59] "TimeDomain.StandardDev.Body.Gyroscopic...Y"                       
+    [60] "TimeDomain.StandardDev.Body.Gyroscopic...Z"                       
+    [61] "TimeDomain.StandardDev.Body.Jerk.Gyroscopic...X"                  
+    [62] "TimeDomain.StandardDev.Body.Jerk.Gyroscopic...Y"                  
+    [63] "TimeDomain.StandardDev.Body.Jerk.Gyroscopic...Z"                  
+    [64] "TimeDomain.StandardDev.Body.Magnetic.Acceleration.."              
+    [65] "TimeDomain.StandardDev.Magnetic.Gravity.Acceleration.."           
+    [66] "TimeDomain.StandardDev.Body.Magnetic.Jerk.Acceleration.."         
+    [67] "TimeDomain.StandardDev.Body.Magnetic.Gyroscopic.."                
+    [68] "TimeDomain.StandardDev.Body.Magnetic.Jerk.Gyroscopic.."           
+    [69] "FrequencyDomain.StandardDev.Body.Acceleration...X"                
+    [70] "FrequencyDomain.StandardDev.Body.Acceleration...Y"                
+    [71] "FrequencyDomain.StandardDev.Body.Acceleration...Z"                
+    [72] "FrequencyDomain.StandardDev.Body.Jerk.Acceleration...X"           
+    [73] "FrequencyDomain.StandardDev.Body.Jerk.Acceleration...Y"           
+    [74] "FrequencyDomain.StandardDev.Body.Jerk.Acceleration...Z"           
+    [75] "FrequencyDomain.StandardDev.Body.Gyroscopic...X"                  
+    [76] "FrequencyDomain.StandardDev.Body.Gyroscopic...Y"                  
+    [77] "FrequencyDomain.StandardDev.Body.Gyroscopic...Z"                  
+    [78] "FrequencyDomain.StandardDev.Body.Magnetic.Acceleration.."         
+    [79] "FrequencyDomain.StandardDev.BodyBody.Magnetic.Jerk.Acceleration.."
+    [80] "FrequencyDomain.StandardDev.BodyBody.Magnetic.Gyroscopic.."       
+    [81] "FrequencyDomain.StandardDev.BodyBody.Magnetic.Jerk.Gyroscopic.."  
+
+Script: 
+    run_analysis.R
+    
+Input Data Files:
+    "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    
+    "HARDataset.zip":       Downloaded copy of zip file from UCI Machine Learning Repository
+    
+    features.txt:           Ordered listing of variables (column names) in data file.
+    
+    activity_labels.txt     Mapping of activity names to identifying numbers.
+    
+    subject_train.txt       Ordered listing of subject row identifiers for training data.  
+    
+    X_train.txt             Measurment data for training data set.
+    
+    Y_train.txt             Ordered listing of activity identifier for training data set.
+    
+    subject_test.txt        Ordered listing of subject row identifiers for testing data set. 
+    
+    X_test.txt              Measurment data for testing data set.
+    
+    Y_test.txt              Ordered listing of activity identifier for testing data set.
+    
+    featureTranslations.txt Added table with mapping of names provided from features.txt to 
+                            human readable form.
+    
+Output:
+    File: 
+        "../TidyDataset.csv" CSV file containing "tidy" data.
+        
+    data.tables/frames: 
+        "dataset"           data.table containing final "tidy" data with mean and standard deviation columns.
+        "crossmeans"        data.frame containing calculated means by subject and activity. 
+
+1. Change working directory to "c:/datasciencecoursera/Getting and Cleaning Data/Course Project"
+
+2. Set name of zip file to be downloaded and download into working directory
+   Source file: "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+   Local file: "HARDataset.zip"
+
+3. Unzip entire dataset into "UCI HAR Dataset" directory.
+
+4. Set working directory to "UCI HAR Dataset" directory.
+
+5. Read in activity_labels.txt; rename columns to "activity_id","activity".
+   File contains listing of activity types for the data set.
+
+6. Read in features.txt; rename columns to "feature_id","feature_name" (stringsAsFactors = FALSE)
+   features.txt contains an ordered listing of the column names.
+    
+7. Create vector of column names from features.txt data. Add column names for subject and activity_id.
+
+8. Read in featureTranslations.txt file; rename columns to "feature","name", stringsAsFactors = FALSE
+   #This table was added to aid in translation of column names to human readable names.
+
+9. Create list of column numbers for columns that contain means and standard deviation variables.
+
+10. Read in training datasets; create single table with subjects, activities, 
+    measurements and column names.
+    10a. #Read in ordered list of subject identifiers "train/subject_train.txt.
+    10b. #Read in actual measurment data "train/X_train.txt".
+    10c. #Read in ordered activity list "train/Y_train.txt"; rename column to "activity_id".
+    10d. #Combine into single data frame with columns for subject, activity, measurements
+         from tables subject_train,Y_train,X_train.
+    10e. Append column names.
+
+11. Read in testing datasets; create single table with subjects, activities, 
+    measurements and column names.
+    11a. #Read in ordered list of subject identifiers "test/subject_test.txt.
+    11b. #Read in actual measurment data "test/X_test.txt".
+    11c. #Read in ordered activity list "test/Y_test.txt"; rename column to "activity_id".
+    11d. #Combine into single data frame with columns for subject, activity, measurements.
+         from tables subject_test,Y_test,X_test.
+    11e. Append column names.
+
+12. Combine training and testing datasets. Only take previously identified mean and
+    standard deviation columns ("colnums" vector from step #9).
+
+13. Change the column names in features table the using feature translations table created in step #8.
+    Store new names in table, clean names, assign to data set.
+
+14. Add column with readable activity names ("activity").
+
+15. Reorder columns; drop activity_id column; move activity column to second column.
+
+16. Write "tidy" data to csv file "../TidyDataset.csv". Data.table is named "dataset".
+
+###############################################################################
+17. Create table of averages by subject and activity.  The final table will be named "crossmeans".
+    17a. Remove existing "crossmeans" table, if any.
+    17b. For each subject and activity combination calculate mean for each column and store.
+         in "crossmeans" data.frame. Create new "crossmeans" data.frame during first iteration.
+
+18. Clean up un-needed data.tables and data.frames.
+
+Data.tables/data.frames remaining are:
+    A. data.table "dataset" containing mean and standard deviation columns.
+    B. data.frame "crossmeans" containing calculated averages of values from 
+       "dataset" grouped by subject and activity.
